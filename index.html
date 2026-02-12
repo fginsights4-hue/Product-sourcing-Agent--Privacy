@@ -62,30 +62,6 @@
             font-weight: 400;
             color: #ffffff;
             font-style: italic;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .nav-right {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-        
-        .login-btn {
-            background: #ffffff;
-            color: #0a0a0a;
-            padding: 10px 28px;
-            border-radius: 24px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            transition: transform 0.2s;
-        }
-        
-        .login-btn:hover {
-            transform: scale(1.02);
         }
         
         /* Hero Section */
@@ -163,6 +139,8 @@
             font-size: 16px;
             transition: transform 0.2s;
             margin-bottom: 64px;
+            cursor: pointer;
+            border: none;
         }
         
         .hero-cta:hover {
@@ -332,6 +310,8 @@
             font-weight: 500;
             font-size: 16px;
             transition: transform 0.2s;
+            cursor: pointer;
+            border: none;
         }
         
         .cta-button:hover {
@@ -378,27 +358,130 @@
             color: rgba(255, 255, 255, 0.9);
         }
         
-        .footer-contact {
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 14px;
-            margin-bottom: 24px;
-            font-weight: 300;
-        }
-        
-        .footer-contact a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-contact a:hover {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
         .footer-copyright {
             color: rgba(255, 255, 255, 0.3);
             font-size: 13px;
             font-weight: 300;
+        }
+        
+        /* Contact Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 48px;
+            width: 90%;
+            max-width: 520px;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+        
+        .modal-close:hover {
+            color: #ffffff;
+        }
+        
+        .modal h3 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        
+        .modal .modal-subtitle {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 15px;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: #ffffff;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit {
+            width: 100%;
+            background: #ffffff;
+            color: #0a0a0a;
+            padding: 16px;
+            border-radius: 32px;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin-top: 8px;
+        }
+        
+        .form-submit:hover {
+            transform: scale(1.02);
         }
         
         /* Responsive */
@@ -417,14 +500,8 @@
                 font-size: 36px;
             }
             
-            .nav-left,
-            .nav-right {
+            .nav-left {
                 display: none;
-            }
-            
-            .logo {
-                position: static;
-                transform: none;
             }
             
             .steps {
@@ -434,6 +511,11 @@
             .feature-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .modal {
+                padding: 32px 24px;
+                margin: 20px;
+            }
         }
     </style>
 </head>
@@ -442,12 +524,8 @@
         <div class="nav-container">
             <div class="nav-left">
                 <a href="#features">About</a>
-                <a href="mailto:fginsights4@gmail.com">Contact</a>
             </div>
             <div class="logo">FG Insights</div>
-            <div class="nav-right">
-                <a href="mailto:fginsights4@gmail.com" class="login-btn">Get Started</a>
-            </div>
         </div>
     </nav>
 
@@ -458,7 +536,7 @@
             </div>
             <h1>Your personal product sourcing agent</h1>
             <p>Automated daily reports with personalized product recommendations—tailored to your audience.</p>
-            <a href="mailto:fginsights4@gmail.com?subject=Product%20Sourcing%20Agent%20Inquiry" class="hero-cta">Get Started</a>
+            <button class="hero-cta" onclick="openContactForm()">Get in Touch</button>
             <div class="hero-proof">
                 <span>⚡ Powered by AI</span>
                 <span>🎯 Audience-specific</span>
@@ -551,7 +629,7 @@
     <section class="cta-section">
         <h2>Ready to get started?</h2>
         <p>Contact us to learn more about pricing and personalized product recommendations.</p>
-        <a href="mailto:fginsights4@gmail.com?subject=Product%20Sourcing%20Agent%20Inquiry" class="cta-button">Get in Touch</a>
+        <button class="cta-button" onclick="openContactForm()">Get in Touch</button>
     </section>
 
     <footer>
@@ -560,15 +638,70 @@
             <div class="footer-links">
                 <a href="privacy.html">Privacy Policy</a>
                 <a href="terms.html">Terms of Service</a>
-                <a href="service-agreement.html">Service Agreement</a>
-            </div>
-            <div class="footer-contact">
-                <a href="mailto:fginsights4@gmail.com">fginsights4@gmail.com</a>
             </div>
             <div class="footer-copyright">
                 © 2026 FG Insights LLC. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <!-- Contact Form Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeContactForm()">&times;</button>
+            <h3>Get in Touch</h3>
+            <p class="modal-subtitle">We'd love to hear from you.</p>
+            <form id="contactForm" onsubmit="submitContactForm(event)">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Message</label>
+                    <textarea id="contactMessage" placeholder="Tell us about your content and audience..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openContactForm() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactForm() {
+            document.getElementById('contactModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactForm();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeContactForm();
+            }
+        });
+
+        function submitContactForm(e) {
+            e.preventDefault();
+            var name = document.getElementById('contactName').value;
+            var email = document.getElementById('contactEmail').value;
+            var message = document.getElementById('contactMessage').value;
+            var subject = encodeURIComponent('Product Sourcing Agent Inquiry from ' + name);
+            var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nMessage:\n' + message);
+            window.location.href = 'mailto:fginsights4@gmail.com?subject=' + subject + '&body=' + body;
+            closeContactForm();
+        }
+    </script>
 </body>
 </html>
